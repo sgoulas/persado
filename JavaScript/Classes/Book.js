@@ -32,7 +32,7 @@ class Book {
                 summary: _summary,
                 ISBN: _ISBN,
                 available: _available,
-                loaned: _loaned
+                loaned: _loaned,
                 id: _id
             };
 
