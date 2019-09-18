@@ -9,8 +9,8 @@ Book_ID int NOT NULL AUTO_INCREMENT,
 Name varchar(80) NOT NULL,
 Summary varchar(80) NOT NULL,
 ISBN varchar(17) NOT NULL,
-Available int,
-Loaned int,
+Available varchar(5),
+Loaned varchar(5),
 PRIMARY KEY (Book_ID)
 )ENGINE=INNODB;
 
@@ -20,7 +20,7 @@ U_ID int NOT NULL AUTO_INCREMENT,
 FirstName varchar(25),
 LastName varchar(30),
 Address varchar(80),
-BooksLoaned int DEFAULT 0,
+BooksLoaned varchar(5),
 PRIMARY KEY (U_ID)
 )ENGINE=INNODB;
 
