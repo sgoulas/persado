@@ -64,6 +64,7 @@
 
 
     <button type="submit" class="btn btn-default">Submit</button>
+    <a href="/persado/www/HTML/index.php" class="btn btn-danger" role="button">cancel</a>
   </form>
 </div>
     </div>
