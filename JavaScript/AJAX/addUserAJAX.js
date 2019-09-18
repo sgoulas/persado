@@ -16,9 +16,9 @@ const addUserAJAX = formData => {
 
     addUserPromise
         .then(function(value) {
-            console.log(value);
+            console.table(value);
         })
         .catch(reason => {
-            console.log(reason);
+            console.table(reason);
         });
 };

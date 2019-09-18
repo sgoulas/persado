@@ -3,8 +3,10 @@ class User {
         let _firstName = info.firstName;
         let _lastName = info.lastName;
         let _address = info.address;
-        let _booksLoaned = info.booksLoaned;
-        let _id = info.hasOwnProperty("id") ? info.id : "-1";
+        let _booksLoaned = info.hasOwnProperty("booksLoaned")
+            ? info.booksLoaned
+            : "0";
+        let _id = info.hasOwnProperty("id") ? info.id : -1;
 
         this.getFirstName = () => {
             return _firstName;

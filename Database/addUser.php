@@ -5,10 +5,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //Get as an object
     $json_obj = json_decode($json_str, false); //second parameter returns array instead of objects
     
-    $FirstName   = $json_obj->FirstName;
-    $LastName    = $json_obj->LastName;
-    $Address     = $json_obj->Address;
-    $BooksLoaned = $json_obj->BooksLoaned;
+    $FirstName   = $json_obj->firstName;
+    $LastName    = $json_obj->lastName;
+    $Address     = $json_obj->address;
     
     $con = mysqli_connect("localhost", "root", "", "library");
     
@@ -21,7 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     mysqli_query($con, "SET NAMES 'utf8'");
     mysqli_query($con, "SET CHARACTER SET 'utf8'");
     
-    $addUserStatement = "INSERT INTO Users(FirstName, LastName, Address, BooksLoaned) VALUES ('" . $FirstName . "', '" . $LastName . "', '" . $Address . "', '" . $BooksLoaned . "')";
+    //by default a new user has no books loaned so BooksLoaned is 0
+    $addUserStatement = "INSERT INTO Users(FirstName, LastName, Address, BooksLoaned) VALUES ('" . $FirstName . "', '" . $LastName . "', '" . $Address . "', '0')";
     
     if (!mysqli_query($con, $addUserStatement)) {
         die('Error: ' . mysqli_error($con));

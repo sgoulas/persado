@@ -50,8 +50,8 @@
   <h2>Add a new user</h2>
   <form id="addUserForm" action="#">
     <div class="form-group">
-      <label for="name">name:</label>
-      <input type="name" class="form-control" id="name" placeholder="first name" name="name">
+      <label for="firstName">firstName:</label>
+      <input type="firstName" class="form-control" id="firstName" placeholder="first name" name="firstName">
     </div>
     <div class="form-group">
       <label for="lastName">lastName:</label>
@@ -83,4 +83,9 @@
 </footer>
 
 </body>
+
+<script src="./../JavaScript/AJAX/addUserAJAX.js"></script>
+<script src="./../JavaScript/PageSpecific/addUser.js"></script>
+<script src="./../JavaScript/Utils/utils.js"></script>
+<script src="./../JavaScript/Classes/User.js"></script>
 </html>
