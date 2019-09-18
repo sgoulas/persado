@@ -1,0 +1,37 @@
+CREATE DATABASE IF NOT EXISTS LIBRARY
+DEFAULT CHARACTER SET utf8
+DEFAULT COLLATE utf8_general_ci;
+USE LIBRARY;
+
+CREATE TABLE Books
+(
+Book_ID int NOT NULL AUTO_INCREMENT,
+Name varchar(80) NOT NULL,
+Summary varchar(80) NOT NULL,
+ISBN varchar(17) NOT NULL,
+Available int,
+Loaned int,
+PRIMARY KEY (Book_ID)
+)ENGINE=INNODB;
+
+Create TABLE Users
+(
+U_ID int NOT NULL AUTO_INCREMENT,
+FirstName varchar(25),
+LastName varchar(30),
+Address varchar(80),
+BooksLoaned int,
+PRIMARY KEY (U_ID)
+)ENGINE=INNODB;
+
+Create TABLE Interactions
+(
+Book_ID int NOT NULL,
+U_ID int NOT NULL,
+DateLoaned DATE,
+DateReturned DATE,
+FOREIGN KEY (Book_ID) REFERENCES Books (Book_ID)
+ON DELETE CASCADE ON UPDATE CASCADE,
+FOREIGN KEY (U_ID) REFERENCES Users (U_ID)
+ON DELETE CASCADE ON UPDATE CASCADE
+)ENGINE=INNODB;
