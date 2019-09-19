@@ -15,12 +15,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $getUsersQuery = "SELECT * from Users";
  
     $result = mysqli_query($con, $getUsersQuery);
+    $rows = array();
 
     if (mysqli_num_rows($result) > 0) {
     // output data of each row
     while($row = mysqli_fetch_assoc($result)) {
-        echo "id: " . $row["U_ID"]. " - Name: " . $row["FirstName"]. " Last name:" . $row["LastName"]. "<br>";
+         $rows[] = $row;
     }
+    print json_encode($rows);
 } else {
     echo "0 results";
 }
@@ -29,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     mysqli_close($con);
     exit();
 } else {
-    echo "error: this is not a post request";
+    echo "error: this is not a GET request";
     exit();
 }
 ?>
