@@ -46,11 +46,30 @@
       <p><a href="#">Link</a></p>
     </div>
     <div class="col-sm-8 text-left"> 
-      <h1>Welcome</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <hr>
-      <h3>Test</h3>
-      <p>Lorem ipsum...</p>
+
+  <h2>Add a new book</h2>
+  <form id="addBookForm" action="#">
+    <div class="form-group">
+      <label for="name">book title:</label>
+      <input type="text" class="form-control" id="name" placeholder="Title" name="name">
+    </div>
+    <div class="form-group">
+      <label for="summary">summary:</label>
+      <textarea class="form-control" rows="4" id="summary" placeholder="Summary"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="ISBN">ISBN:</label>
+      <input type="text" class="form-control" id="ISBN" placeholder="ISBN" name="ISBN">
+    </div>
+    <div class="form-group">
+      <label for="purchased">purchased:</label>
+      <input type="text" class="form-control" id="purchased" placeholder="Number of books purchased" name="purchased">
+    </div> 
+
+
+    <button type="submit" class="btn btn-default">Submit</button>
+    <a href="/persado/www/HTML/index.php" class="btn btn-danger" role="button">cancel</a>
+  </form>
     </div>
     <div class="col-sm-2 sidenav">
       <div class="well">
