@@ -2,12 +2,13 @@ $(document).ready(function() {
     /**
      * EVENT LISTENERS
      */
-    $("#addUserForm").on("submit", function(e) {
+    $("#addBookForm").on("submit", function(e) {
         e.preventDefault();
 
         // get all the inputs into an array.
         let inputs = $(this).serializeArray();
         let data = objectifySerializedArray(inputs);
-        addUserAJAX(data);
+        console.log(data);
+        addBookAJAX(data);
     });
 });

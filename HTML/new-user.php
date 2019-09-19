@@ -88,5 +88,4 @@
 <script src="./../JavaScript/AJAX/addUserAJAX.js"></script>
 <script src="./../JavaScript/PageSpecific/addUser.js"></script>
 <script src="./../JavaScript/Utils/utils.js"></script>
-<script src="./../JavaScript/Classes/User.js"></script>
 </html>

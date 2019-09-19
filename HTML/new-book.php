@@ -55,7 +55,7 @@
     </div>
     <div class="form-group">
       <label for="summary">summary:</label>
-      <textarea class="form-control" rows="4" id="summary" placeholder="Summary"></textarea>
+      <textarea class="form-control" rows="4" id="summary" placeholder="Summary" name="summary"></textarea>
     </div>
     <div class="form-group">
       <label for="ISBN">ISBN:</label>
@@ -87,4 +87,8 @@
 </footer>
 
 </body>
+
+<script src="./../JavaScript/Utils/utils.js"></script>
+<script src="./../JavaScript/AJAX/addBookAJAX.js"></script>
+<script src="./../JavaScript/PageSpecific/addBook.js"></script>
 </html>
