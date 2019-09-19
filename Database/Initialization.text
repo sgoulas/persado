@@ -24,12 +24,13 @@ BooksLoaned varchar(5),
 PRIMARY KEY (U_ID)
 )ENGINE=INNODB;
 
-Create TABLE Interactions
+Create TABLE Registry
 (
 Book_ID int NOT NULL,
 U_ID int NOT NULL,
-DateLoaned DATE,
-DateReturned DATE,
+DateLoaned DATE DEFAULT NULL,
+DateReturned DATE DEFAULT NULL,
+INDEX (U_ID, DateReturned),
 FOREIGN KEY (Book_ID) REFERENCES Books (Book_ID)
 ON DELETE CASCADE ON UPDATE CASCADE,
 FOREIGN KEY (U_ID) REFERENCES Users (U_ID)
