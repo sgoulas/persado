@@ -17,8 +17,13 @@ const addUserAJAX = formData => {
     addUserPromise
         .then(function(value) {
             console.table(value);
+            alert("User successfully created in the database!");
+            window.location.href = "/persado/www/HTML/index.php";
         })
         .catch(reason => {
             console.table(reason);
+            alert(
+                "Something went wrong! Please contact your system administrator."
+            );
         });
 };
