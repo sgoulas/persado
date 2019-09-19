@@ -51,7 +51,7 @@
   <form id="addBookForm" action="#">
     <div class="form-group">
       <label for="name">book title:</label>
-      <input type="text" class="form-control" id="name" placeholder="Title" name="name">
+      <input type="text" class="form-control" id="name" placeholder="Title" name="name" required>
     </div>
     <div class="form-group">
       <label for="summary">summary:</label>
@@ -59,11 +59,11 @@
     </div>
     <div class="form-group">
       <label for="ISBN">ISBN:</label>
-      <input type="text" class="form-control" id="ISBN" placeholder="ISBN" name="ISBN">
+      <input type="text" class="form-control" id="ISBN" placeholder="ISBN" name="ISBN" required>
     </div>
     <div class="form-group">
       <label for="purchased">purchased:</label>
-      <input type="text" class="form-control" id="purchased" placeholder="Number of books purchased" name="purchased">
+      <input type="text" class="form-control" id="purchased" placeholder="Number of books purchased" name="purchased" required>
     </div> 
 
 

@@ -51,15 +51,15 @@
   <form id="addUserForm" action="#">
     <div class="form-group">
       <label for="firstName">firstName:</label>
-      <input type="firstName" class="form-control" id="firstName" placeholder="first name" name="firstName">
+      <input type="firstName" class="form-control" id="firstName" placeholder="first name" name="firstName" required>
     </div>
     <div class="form-group">
       <label for="lastName">lastName:</label>
-      <input type="lastName" class="form-control" id="lastName" placeholder="last name" name="lastName">
+      <input type="lastName" class="form-control" id="lastName" placeholder="last name" name="lastName" required>
     </div>
     <div class="form-group">
       <label for="address">address:</label>
-      <input type="address" class="form-control" id="address" placeholder="address" name="address">
+      <input type="address" class="form-control" id="address" placeholder="address" name="address" required>
     </div>    
 
 
