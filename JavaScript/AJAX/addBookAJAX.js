@@ -5,6 +5,11 @@ const addBookAJAX = formData => {
             url: "/persado/www/Database/addBook.php",
             data: JSON.stringify(formData),
             success: function(data) {
+                //this refers to the success of the AJAX call, not the db operation
+
+                if (data.includes("error")) {
+                    reject(data);
+                }
                 resolve("success: " + data);
             },
             error: function(jqXHR, exception) {
