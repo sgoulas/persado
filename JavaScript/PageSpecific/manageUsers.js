@@ -5,10 +5,28 @@ $("document").ready(() => {
     let source = document.getElementById("entry-template").innerHTML;
     let template = Handlebars.compile(source);
 
-    //call this on a function call
-    let context = { name: "My new user" };
-    let html = template(context);
-    $("#usersList").html(html);
+    const populateUserHTMLlist = dbUsers => {
+        let usersArray = [];
+        for (let i = 0; i < dbUsers.length; i++) {
+            let user = {};
+            user = {
+                id: dbUsers[i].U_ID,
+                firstName: dbUsers[i].FirstName,
+                lastName: dbUsers[i].LastName,
+                loaned: dbUsers[i].BooksLoaned
+            };
+
+            usersArray.push(user);
+        }
+
+        //sort the list alphabetically by last name
+        usersArray.sort((a, b) => (a.lastName > b.lastName ? 1 : -1));
+
+        for (let i = 0; i < usersArray.length; i++) {
+            let html = template(usersArray[i]);
+            $("#usersList").append(html);
+        }
+    };
 
     let users; //all database users
 
@@ -30,9 +48,9 @@ $("document").ready(() => {
 
     getUsersPromise
         .then(() => {
-            console.log("got all users");
             users = JSON.parse(users);
             //call handlebars...
+            populateUserHTMLlist(users);
         })
         .catch(reason => {
             console.table(reason);

@@ -50,9 +50,6 @@
 <div class="container">
   <h2>Active Item in a List Group</h2>
   <div id="usersList" class="list-group">
-    <a href="#" class="list-group-item glyphicon glyphicon-user"><span style="margin-left: 10px;">First item </span><span class="pull-right"> <span class ="glyphicon glyphicon-remove"></span></span></a>
-    <a href="#" class="list-group-item">Second item</a>
-    <a href="#" class="list-group-item">Third item</a>
   </div>
 </div><hr>
       <h3>Test</h3>
@@ -74,14 +71,17 @@
 </footer>
 
 </body>
-<script src="./../JavaScript/AJAX/getAllUsersAJAX.js"></script>
+<script src="./../JavaScript/Classes/User.js"></script>
 <script src="./../JavaScript/PageSpecific/manageUsers.js"></script>
 
 
 
 <script id="entry-template" type="text/x-handlebars-template">
-<a href="#" class="list-group-item glyphicon glyphicon-user">
-<span style="margin-left: 10px;">{{name}} </span>
+<a href="#" class="list-group-item glyphicon glyphicon-user"
+data-id={{id}}
+data-books-loaned={{loaned}}
+>
+<span style="margin-left: 10px;">{{firstName}} {{lastName}} </span>
 <span class="pull-right"> 
 <span class ="glyphicon glyphicon-remove">
 </span>
