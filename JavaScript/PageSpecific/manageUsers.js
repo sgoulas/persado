@@ -57,7 +57,7 @@ $("document").ready(() => {
     getUsersPromise
         .then(() => {
             users = JSON.parse(users);
-            //call handlebars...
+            //call handlebars
             populateUserHTMLlist(users);
         })
         .catch(reason => {
@@ -69,6 +69,7 @@ $("document").ready(() => {
 });
 
 const refuseToDelete = userID => {
+    alert("User must first return loaned books!");
     //get the books this user has loaned
 };
 
@@ -76,14 +77,24 @@ const refuseToDelete = userID => {
  * EVENT LISTENERS
  */
 $("body").on("click", ".glyphicon.glyphicon-remove", function() {
+    let userName = $(this)
+        .closest(".list-group-item")
+        .attr("data-name");
+    let confirmation = confirm(
+        "Are you sure you want to delete user " +
+            userName +
+            " ?\nThis action can not be undone."
+    );
+    if (!confirmation) {
+        return false;
+    }
     let userCanBeDeleted =
         parseInt(
             $(this)
                 .closest(".list-group-item")
                 .attr("data-books-loaned")
         ) >= 0;
-    console.log(userCanBeDeleted);
-    //get user id
+    //get user id from the html5 attribute
     let userID = $(this)
         .closest(".list-group-item")
         .attr("data-id");
@@ -114,7 +125,11 @@ $("body").on("click", ".glyphicon.glyphicon-remove", function() {
     deleteUserPromise
         .then(() => {
             //remove the row from the document
+            $(this)
+                .closest(".list-group-item")
+                .remove();
             //alert the user was deleted
+            alert("User successfully deleted.");
         })
         .catch(reason => {
             console.table(reason);

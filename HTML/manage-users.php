@@ -80,6 +80,7 @@
 <a href="#" class="list-group-item glyphicon glyphicon-user"
 data-id={{id}}
 data-books-loaned={{loaned}}
+data-name={{firstName}}
 >
 <span style="margin-left: 10px;">{{firstName}} {{lastName}} </span>
 <span class="pull-right"> 
