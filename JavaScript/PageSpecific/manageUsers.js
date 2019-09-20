@@ -68,6 +68,16 @@ $("document").ready(() => {
         });
 });
 
+const askConfirmation = userName => {
+    let confirmation = confirm(
+        "Are you sure you want to delete user " +
+            userName +
+            " ?\nThis action can not be undone."
+    );
+
+    return confirmation;
+};
+
 const refuseToDelete = userID => {
     alert("User must first return loaned books!");
     //get the books this user has loaned
@@ -80,12 +90,8 @@ $("body").on("click", ".glyphicon.glyphicon-remove", function() {
     let userName = $(this)
         .closest(".list-group-item")
         .attr("data-name");
-    let confirmation = confirm(
-        "Are you sure you want to delete user " +
-            userName +
-            " ?\nThis action can not be undone."
-    );
-    if (!confirmation) {
+
+    if (!askConfirmation(userName)) {
         return false;
     }
     let userCanBeDeleted =
