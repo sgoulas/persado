@@ -5,6 +5,12 @@ $("document").ready(() => {
     let source = document.getElementById("entry-template").innerHTML;
     let template = Handlebars.compile(source);
 
+    /**
+     *
+     * @param {Array} dbUsers of database JSON objects
+     * dynamically create an html list-item element for each user
+     * and render it on the page
+     */
     const populateUserHTMLlist = dbUsers => {
         let usersArray = [];
         for (let i = 0; i < dbUsers.length; i++) {
@@ -22,6 +28,7 @@ $("document").ready(() => {
         //sort the list alphabetically by last name
         usersArray.sort((a, b) => (a.lastName > b.lastName ? 1 : -1));
 
+        //create the html elements and render them
         for (let i = 0; i < usersArray.length; i++) {
             let html = template(usersArray[i]);
             $("#usersList").append(html);
