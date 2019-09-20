@@ -71,31 +71,44 @@ $("document").ready(() => {
 });
 
 /**
- *
- * @param {String} id the id of the user in the database
- * deletes the specified user in the dabase
- */
-const deleteUser = id => {
-    $.ajax({
-        url: "/persado/www/Database/deleteUser.php",
-        type: "POST",
-        success: function(data) {
-            console.log(data);
-            //alert the user was deleted
-            resolve("success");
-        },
-        error: function(xhr, statusText, err) {
-            console.log("error" + xhr.status);
-            //alert the error
-            reject("error" + xhr.status);
-        }
-    });
-};
-
-/**
  * EVENT LISTENERS
  */
 $("body").on("click", ".glyphicon.glyphicon-remove", function() {
     console.log("remove button clicked");
-    //dlete user
+    //can this user be deleted?
+    let userCanBeDeleted; //check loaned book data
+    if (!userCanBeDeleted) {
+        //display info message + list of books that are currently loaned to user
+        return false;
+    }
+    //get user id
+    let userID;
+    //delete user
+    let deleteUserPromise = new Promise((resolve, reject) => {
+        $.ajax({
+            url: "/persado/www/Database/deleteUser.php",
+            type: "POST",
+            data: userID,
+            success: function(data) {
+                console.log(data);
+                resolve("success");
+            },
+            error: function(xhr, statusText, err) {
+                console.log("error" + xhr.status);
+                reject("error" + xhr.status);
+            }
+        });
+    });
+
+    deleteUserPromise
+        .then(() => {
+            //remove the row from the document
+            //alert the user was deleted
+        })
+        .catch(reason => {
+            console.table(reason);
+            alert(
+                "Something went wrong! Please contact your system administrator."
+            );
+        });
 });
