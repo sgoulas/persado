@@ -45,12 +45,10 @@ $("document").ready(() => {
             url: "/persado/www/Database/manageUsers.php",
             type: "GET",
             success: function(data) {
-                console.log(data);
                 users = data;
                 resolve("success");
             },
             error: function(xhr, statusText, err) {
-                console.log("error" + xhr.status);
                 reject("error" + xhr.status);
             }
         });
@@ -70,25 +68,38 @@ $("document").ready(() => {
         });
 });
 
+const refuseToDelete = userID => {
+    //get the books this user has loaned
+};
+
 /**
  * EVENT LISTENERS
  */
 $("body").on("click", ".glyphicon.glyphicon-remove", function() {
-    console.log("remove button clicked");
-    //can this user be deleted?
-    let userCanBeDeleted; //check loaned book data
+    let userCanBeDeleted =
+        parseInt(
+            $(this)
+                .closest(".list-group-item")
+                .attr("data-books-loaned")
+        ) >= 0;
+    console.log(userCanBeDeleted);
+    //get user id
+    let userID = $(this)
+        .closest(".list-group-item")
+        .attr("data-id");
     if (!userCanBeDeleted) {
         //display info message + list of books that are currently loaned to user
+        refuseToDelete(userID);
         return false;
     }
-    //get user id
-    let userID;
+
     //delete user
+    let data = { ID: userID };
     let deleteUserPromise = new Promise((resolve, reject) => {
         $.ajax({
             url: "/persado/www/Database/deleteUser.php",
             type: "POST",
-            data: userID,
+            data: JSON.stringify(data),
             success: function(data) {
                 console.log(data);
                 resolve("success");
