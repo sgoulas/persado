@@ -48,11 +48,11 @@
     </div>
     <div class="col-sm-8 text-left"> 
 <div class="container">
-  <h2>Active Item in a List Group</h2>
+  <h2>User Directory</h2>
   <div id="usersList" class="list-group">
   </div>
 </div><hr>
-      <h3>Test</h3>
+      <h3>Εδώ εμφάνισε τη λίστα χρωστούμενων βιβλίων:</h3>
       <p>Lorem ipsum...</p>
     </div>
     <div class="col-sm-2 sidenav">
