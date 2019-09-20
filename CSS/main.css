@@ -33,3 +33,9 @@ footer {
         height: auto;
     }
 }
+
+@media screen and (min-width: 767px) {
+    #usersList {
+        margin-right: 11%;
+    }
+}
