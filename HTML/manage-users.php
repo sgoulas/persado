@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="./../CSS/main.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="../JavaScript/Utils/handlebars-v4.2.0.js"></script>
 </head>
 <body>
 
@@ -49,7 +50,7 @@
 <div class="container">
   <h2>Active Item in a List Group</h2>
   <div id="usersList" class="list-group">
-    <a href="#" class="list-group-item">First item</a>
+    <a href="#" class="list-group-item glyphicon glyphicon-user"><span style="margin-left: 10px;">First item </span><span class="pull-right"> <span class ="glyphicon glyphicon-remove"></span></span></a>
     <a href="#" class="list-group-item">Second item</a>
     <a href="#" class="list-group-item">Third item</a>
   </div>
@@ -74,4 +75,18 @@
 
 </body>
 <script src="./../JavaScript/AJAX/getAllUsersAJAX.js"></script>
+<script src="./../JavaScript/PageSpecific/manageUsers.js"></script>
+
+
+
+<script id="entry-template" type="text/x-handlebars-template">
+  <div class="entry">
+    <h1>{{title}}</h1>
+    <div class="body">
+      {{body}}
+    </div>
+  </div>
+</script>
+
+
 </html>
