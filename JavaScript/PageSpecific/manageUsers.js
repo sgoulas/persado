@@ -1,3 +1,6 @@
+/**
+ * on document ready get all users from database and render them on the document
+ */
 $("document").ready(() => {
     /**
      * HANDLEBARS code
@@ -68,8 +71,31 @@ $("document").ready(() => {
 });
 
 /**
+ *
+ * @param {String} id the id of the user in the database
+ * deletes the specified user in the dabase
+ */
+const deleteUser = id => {
+    $.ajax({
+        url: "/persado/www/Database/deleteUser.php",
+        type: "POST",
+        success: function(data) {
+            console.log(data);
+            //alert the user was deleted
+            resolve("success");
+        },
+        error: function(xhr, statusText, err) {
+            console.log("error" + xhr.status);
+            //alert the error
+            reject("error" + xhr.status);
+        }
+    });
+};
+
+/**
  * EVENT LISTENERS
  */
 $("body").on("click", ".glyphicon.glyphicon-remove", function() {
     console.log("remove button clicked");
+    //dlete user
 });
