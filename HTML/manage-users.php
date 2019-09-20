@@ -68,4 +68,5 @@
 </footer>
 
 </body>
+<script src="./../JavaScript/AJAX/getAllUsersAJAX.js"></script>
 </html>
