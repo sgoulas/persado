@@ -80,12 +80,13 @@
 
 
 <script id="entry-template" type="text/x-handlebars-template">
-  <div class="entry">
-    <h1>{{title}}</h1>
-    <div class="body">
-      {{body}}
-    </div>
-  </div>
+<a href="#" class="list-group-item glyphicon glyphicon-user">
+<span style="margin-left: 10px;">{{name}} </span>
+<span class="pull-right"> 
+<span class ="glyphicon glyphicon-remove">
+</span>
+</span>
+</a>
 </script>
 
 
