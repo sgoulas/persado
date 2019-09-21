@@ -9,6 +9,7 @@
    <link rel="stylesheet" href="./../CSS/manageBooks.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="../JavaScript/Utils/handlebars-v4.2.0.js"></script>
 </head>
 <body>
 
@@ -56,7 +57,7 @@
         <th>Currently loaned to</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody id="books-table-body">
       <tr>
         <td>moby dick</td>
         <td class="ISBN">46845134384</td>
@@ -84,4 +85,17 @@
 </footer>
 
 </body>
+
+<!-- handlebars books template -->
+<script id="books-template" type="text/x-handlebars-template">
+      <tr>
+        <td>{{bookName}}</td>
+        <td class="ISBN">{{ISBN}}</td>
+        <td class="available-copies">{{available}}</td>
+        <td class="purchased-copies">{{purchased}}</td>
+        <td>{{lentTo}}</td>
+      </tr>
+</script>
+
+
 </html>
