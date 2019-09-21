@@ -54,8 +54,9 @@
     <thead>
       <tr>
         <th>Book name</th>
-        <th>Available</th>
-        <th>Loan to</th>
+        <th>Copies available</th>
+        <th>User</th>
+        <th></th>
       </tr>
     </thead>
     <tbody id="available-books-list"></tbody>
@@ -96,8 +97,8 @@
       <tr>
         <td>{{BookName}}</td>
         <td>{{Available}}</td>
+
         <td>
-        
       <div class="dropdown">
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select user
         <span class="caret"></span></button>
@@ -107,8 +108,9 @@
          <li><a href="#">user 3</a></li>
          </ul>
       </div>
-        
         </td>
+
+        <td><button type="button" class="btn btn-primary">loan</button></td>
       </tr>
 
 </script>
