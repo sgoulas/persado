@@ -99,7 +99,7 @@
         <td class="ISBN">{{ISBN}}</td>
         <td class="purchased-copies">{{purchased}}</td>
         <td class="copies-on-loan">{{onLoan}}</td>
-        <td>{{lentTo}}</td>
+        <td class="current-owners">{{lentTo}}</td>
         <td style="width: 5%;"><span class ="glyphicon glyphicon-remove"></td>
       </tr>
 </script>

@@ -6,6 +6,11 @@ let booksSource;
 let booksTemplate;
 let bookSummaries = [];
 
+/**
+ *
+ * @param {Array} booksList
+ * populate the DOM with all the books in the booksList array
+ */
 const populateBooksList = booksList => {
     let bookArray = [];
     for (let i = 0; i < booksList.length; i++) {
@@ -36,6 +41,41 @@ const populateBooksList = booksList => {
     }
 };
 
+/**
+ *
+ * @param {Array} loanedBooks
+ * loops through all loaned books and matches them with their rendered counterparts,
+ * then renders in the correct table column the names of the current occupants of the copies.
+ * TODO This should be done in a more efficient way
+ */
+const populateLentToColumn = loanedBooks => {
+    let renderedBooks = $(".book");
+    for (let i = 0; i < loanedBooks.length; i++) {
+        for (let j = 0; j < renderedBooks.length; j++) {
+            if (
+                loanedBooks[i].Book_ID ===
+                renderedBooks.eq(j).attr("data-book-id")
+            ) {
+                let html =
+                    "<p>" +
+                    loanedBooks[i].FirstName +
+                    " " +
+                    loanedBooks[i].LastName +
+                    "</p>";
+                renderedBooks
+                    .eq(j)
+                    .find(".current-owners")
+                    .append(html);
+            }
+        }
+    }
+};
+
+/**
+ *
+ * @param {String} bookID
+ * @returns the summary of the book specified by bookID param
+ */
 const getBookSummary = bookID => {
     for (let i = 0; i < bookSummaries.length; i++) {
         if (bookSummaries[i].bookID == bookID) {
@@ -54,6 +94,9 @@ const deleteBookConfirmation = bookName => {
     return confirmation;
 };
 
+/*****************
+ * DOCUMENT READY
+ *****************/
 $("document").ready(() => {
     //books template
     booksSource = document.getElementById("books-template").innerHTML;
@@ -76,6 +119,19 @@ $("document").ready(() => {
     getBooksPromise
         .then(value => {
             populateBooksList(JSON.parse(value));
+        })
+        .then(() => {
+            //TODO also add currently loaned to..
+            $.ajax({
+                url: "/persado/www/Database/getBooksCurrentlyLoaned.php",
+                type: "GET",
+                success: function(data) {
+                    populateLentToColumn(JSON.parse(data));
+                },
+                error: function(xhr, statusText, err) {
+                    console.log("error" + xhr.status);
+                }
+            });
         })
         .catch(reason => {
             alert(reason);
