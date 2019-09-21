@@ -78,9 +78,37 @@ const askConfirmation = userName => {
     return confirmation;
 };
 
+/**
+ * @param userID of type {String} the ID of the user to search for loaned books,
+ * @returns a JSON array of book names this user has loaned and not yet returned
+ */
 const refuseToDelete = userID => {
-    alert("User must first return loaned books!");
+    alert("User must first return loaned books!"); //TODO move this message from an alert to inside the DOM
+    let data = { ID: userID };
     //get the books this user has loaned
+    let getUserLoanedBooksPromise = new Promise((resolve, reject) => {
+        $.ajax({
+            url: "/persado/www/Database/getUserLoanedBooks.php",
+            type: "POST",
+            data: JSON.stringify(data),
+            success: function(data) {
+                resolve(data);
+            },
+            error: function(xhr, statusText, err) {
+                console.log("error" + xhr.status);
+                reject("error" + xhr.status);
+            }
+        });
+    });
+
+    getUserLoanedBooksPromise
+        .then(value => {
+            console.log(value);
+            //TODO display the loaned books in the DOM
+        })
+        .catch(reason => {
+            console.log(reason);
+        });
 };
 
 /**
@@ -90,26 +118,26 @@ $("body").on("click", ".glyphicon.glyphicon-remove", function() {
     let userName = $(this)
         .closest(".list-group-item")
         .attr("data-name");
-
-    if (!askConfirmation(userName)) {
-        return false;
-    }
+    let userID = $(this)
+        .closest(".list-group-item")
+        .attr("data-id");
     let userCanBeDeleted =
         parseInt(
             $(this)
                 .closest(".list-group-item")
                 .attr("data-books-loaned")
-        ) >= 0;
+        ) === 0;
+
+    if (!askConfirmation(userName)) {
+        return false;
+    }
     //get user id from the html5 attribute
-    let userID = $(this)
-        .closest(".list-group-item")
-        .attr("data-id");
+
     if (!userCanBeDeleted) {
         //display info message + list of books that are currently loaned to user
         refuseToDelete(userID);
         return false;
     }
-
     //delete user
     let data = { ID: userID };
     let deleteUserPromise = new Promise((resolve, reject) => {

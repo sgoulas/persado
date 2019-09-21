@@ -1,10 +1,10 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     /*Get JSON as a string*/
     $json_str = file_get_contents('php://input');
     /*Get as an object*/
     $json_obj = json_decode($json_str, false); //second parameter returns array instead of objects
-    
+     
     $userID   = $json_obj->ID;
 
     $con = mysqli_connect("localhost", "root", "", "library");
