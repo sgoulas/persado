@@ -1,5 +1,5 @@
 /**
- * HANDLEBARS code
+ * HANDLEBARS variable declarations
  */
 let loanedBooksSource;
 let loanedBooksTemplate;
@@ -22,7 +22,7 @@ $("document").ready(() => {
      *
      * @param {Array} dbUsers of database JSON objects
      * dynamically create an html list-item element for each user
-     * and render it on the page
+     * and render it on the DOM
      */
     const populateUserHTMLlist = dbUsers => {
         let usersArray = [];
@@ -89,6 +89,36 @@ const askConfirmation = userName => {
 };
 
 /**
+ *
+ * @param {Array} booksList of database JSON objects
+ * dynamically create an html list-item element for each book the user has loaned
+ * and render it on the DOM
+ */
+const populateUserLoanedBooksList = booksList => {
+    objectifySerializedArray(booksList);
+    let bookArray = [];
+    for (let i = 0; i < booksList.length; i++) {
+        let book = {};
+        book = {
+            bookName: booksList[i].Name,
+            dateLoaned: booksList[i].DateLoaned
+        };
+        bookArray.push(book);
+    }
+
+    //sort the list by date loaned
+    bookArray.sort((a, b) => (a.dateLoaned > b.dateLoaned ? 1 : -1));
+
+    //create the html elements and render them
+    for (let i = 0; i < bookArray.length; i++) {
+        let html = loanedBooksTemplate(bookArray[i]);
+        $("#user-loaned-books-list").append(html);
+    }
+    //show the list
+    $("#user-loaned-books-list").show();
+};
+
+/**
  * @param userID of type {String} the ID of the user to search for loaned books,
  * @returns a JSON array of book names this user has loaned and not yet returned
  */
@@ -113,8 +143,7 @@ const refuseToDelete = userID => {
 
     getUserLoanedBooksPromise
         .then(value => {
-            console.log(value);
-            //TODO display the loaned books in the DOM
+            populateUserLoanedBooksList(JSON.parse(value));
         })
         .catch(reason => {
             console.log(reason);
