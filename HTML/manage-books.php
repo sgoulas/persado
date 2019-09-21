@@ -55,16 +55,10 @@
         <th class="purchased-copies">Copies</th>
         <th class="available-copies">Copies on loan</th>
         <th>Currently loaned to</th>
+        <th>Delete book</th>
       </tr>
     </thead>
     <tbody id="books-table-body">
-      <tr>
-        <td>moby dick</td>
-        <td class="ISBN">46845134384</td>
-        <td class="purchased-copies">10</td>
-        <td class="available-copies">5</td>
-        <td>sgoulas</td>
-      </tr>
     </tbody>
   </table>
   </div>
@@ -96,6 +90,7 @@
         <td class="purchased-copies">{{purchased}}</td>
         <td class="available-copies">{{available}}</td>
         <td>{{lentTo}}</td>
+        <td style="width: 5%;"><span class ="glyphicon glyphicon-remove"></td>
       </tr>
 </script>
 
