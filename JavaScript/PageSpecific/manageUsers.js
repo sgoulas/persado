@@ -1,12 +1,22 @@
 /**
+ * HANDLEBARS code
+ */
+let loanedBooksSource;
+let loanedBooksTemplate;
+let usersSource;
+let usersTemplate;
+
+/**
  * on document ready get all users from database and render them on the document
  */
 $("document").ready(() => {
-    /**
-     * HANDLEBARS code
-     */
-    let source = document.getElementById("entry-template").innerHTML;
-    let template = Handlebars.compile(source);
+    //loaned books template
+    loanedBooksSource = document.getElementById("loaned-books-template")
+        .innerHTML;
+    loanedBooksTemplate = Handlebars.compile(loanedBooksSource);
+    //users template
+    usersSource = document.getElementById("entry-template").innerHTML;
+    usersTemplate = Handlebars.compile(usersSource);
 
     /**
      *
@@ -33,7 +43,7 @@ $("document").ready(() => {
 
         //create the html elements and render them
         for (let i = 0; i < usersArray.length; i++) {
-            let html = template(usersArray[i]);
+            let html = usersTemplate(usersArray[i]);
             $("#usersList").append(html);
         }
     };
