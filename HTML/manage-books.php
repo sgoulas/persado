@@ -50,10 +50,10 @@
       <table class="table table-striped">
     <thead>
       <tr>
-        <th>Bookname</th>
+        <th>Book name</th>
         <th class="ISBN">ISBN</th>
-        <th class="available-copies">Copies available</th>
-        <th class="purchased-copies">Copies purchased</th>
+        <th class="purchased-copies">Copies</th>
+        <th class="available-copies">Copies on loan</th>
         <th>Currently loaned to</th>
       </tr>
     </thead>
@@ -61,8 +61,8 @@
       <tr>
         <td>moby dick</td>
         <td class="ISBN">46845134384</td>
-        <td class="available-copies">5</td>
         <td class="purchased-copies">10</td>
+        <td class="available-copies">5</td>
         <td>sgoulas</td>
       </tr>
     </tbody>
@@ -90,14 +90,15 @@
 
 <!-- handlebars books template -->
 <script id="books-template" type="text/x-handlebars-template">
-      <tr>
+      <tr data-book-id={{bookID}}>
         <td>{{bookName}}</td>
         <td class="ISBN">{{ISBN}}</td>
-        <td class="available-copies">{{available}}</td>
         <td class="purchased-copies">{{purchased}}</td>
+        <td class="available-copies">{{available}}</td>
         <td>{{lentTo}}</td>
       </tr>
 </script>
 
 
 </html>
+
