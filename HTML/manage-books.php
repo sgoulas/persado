@@ -84,11 +84,17 @@
 
 <!-- handlebars books template -->
 <script id="books-template" type="text/x-handlebars-template">
-      <tr data-book-id={{bookID}}>
+      <tr class="book" 
+      data-book-id={{bookID}}
+      data-book-name="{{bookName}}"
+      data-purchased-copies={{purchased}}
+      data-available-copies={{available}}
+      data-onloan={{onLoan}}
+      >
         <td>{{bookName}}</td>
         <td class="ISBN">{{ISBN}}</td>
         <td class="purchased-copies">{{purchased}}</td>
-        <td class="available-copies">{{available}}</td>
+        <td class="copies-on-loan">{{onLoan}}</td>
         <td>{{lentTo}}</td>
         <td style="width: 5%;"><span class ="glyphicon glyphicon-remove"></td>
       </tr>

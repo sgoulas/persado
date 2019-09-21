@@ -1,8 +1,8 @@
 /**
  * HANDLEBARS variable declarations
  */
-let loanedBooksSource;
-let loanedBooksTemplate;
+let booksSource;
+let booksTemplate;
 let usersSource;
 let usersTemplate;
 
@@ -11,9 +11,8 @@ let usersTemplate;
  */
 $("document").ready(() => {
     //loaned books template
-    loanedBooksSource = document.getElementById("loaned-books-template")
-        .innerHTML;
-    loanedBooksTemplate = Handlebars.compile(loanedBooksSource);
+    booksSource = document.getElementById("loaned-books-template").innerHTML;
+    booksTemplate = Handlebars.compile(booksSource);
     //users template
     usersSource = document.getElementById("entry-template").innerHTML;
     usersTemplate = Handlebars.compile(usersSource);
@@ -78,7 +77,7 @@ $("document").ready(() => {
         });
 });
 
-const askConfirmation = userName => {
+const deleteUserConfirmation = userName => {
     let confirmation = confirm(
         "Are you sure you want to delete user " +
             userName +
@@ -111,7 +110,7 @@ const populateUserLoanedBooksList = booksList => {
 
     //create the html elements and render them
     for (let i = 0; i < bookArray.length; i++) {
-        let html = loanedBooksTemplate(bookArray[i]);
+        let html = booksTemplate(bookArray[i]);
         $("#user-loaned-books-list").append(html);
     }
     //show the list
@@ -167,7 +166,7 @@ $("body").on("click", ".glyphicon.glyphicon-remove", function() {
                 .attr("data-books-loaned")
         ) === 0;
 
-    if (!askConfirmation(userName)) {
+    if (!deleteUserConfirmation(userName)) {
         return false;
     }
     //get user id from the html5 attribute

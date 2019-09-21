@@ -14,7 +14,8 @@ const populateBooksList = booksList => {
             bookName: booksList[i].Name,
             ISBN: booksList[i].ISBN,
             purchased: booksList[i].Purchased,
-            available: booksList[i].Available
+            available: booksList[i].Available,
+            onLoan: booksList[i].Purchased - booksList[i].Available
         };
         bookArray.push(book);
     }
@@ -26,6 +27,16 @@ const populateBooksList = booksList => {
         let html = booksTemplate(bookArray[i]);
         $("#books-table-body").append(html);
     }
+};
+
+const deleteBookConfirmation = bookName => {
+    let confirmation = confirm(
+        'Are you sure you want to delete "' +
+            bookName +
+            '" ?\nThis action can not be undone.'
+    );
+
+    return confirmation;
 };
 
 $("document").ready(() => {
@@ -54,4 +65,29 @@ $("document").ready(() => {
         .catch(reason => {
             alert(reason);
         });
+
+    $("body").on("click", ".glyphicon.glyphicon-remove", function() {
+        let copiesOnLoan = parseInt(
+            $(this)
+                .closest("tr")
+                .attr("data-onloan")
+        );
+        let canBeDeleted = copiesOnLoan === 0;
+        if (!canBeDeleted) {
+            alert("Can not delete book. Copies of it are still on loan.");
+            return false;
+        }
+        //TODO alert why it can not be deleted
+
+        let bookName = $(this)
+            .closest("tr")
+            .attr("data-book-name");
+        if (!deleteBookConfirmation(bookName)) {
+            return false;
+        }
+        let bookID = $(this)
+            .closest("tr")
+            .attr("data-book-id");
+        console.log(bookID);
+    });
 });
