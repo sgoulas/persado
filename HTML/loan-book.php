@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="./../CSS/main.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="./../JavaScript/Utils/handlebars-v4.2.0.js"></script>
 </head>
 <body>
 
@@ -43,11 +44,34 @@
       <p><a href="#">Link</a></p>
     </div>
     <div class="col-sm-8 text-left"> 
-      <h1>Welcome</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <hr>
-      <h3>Test</h3>
-      <p>Lorem ipsum...</p>
+  <div class="list-group">
+    <h3>Loan a book to a user by clicking their name in the "loan book" drop down menu.</h3>
+
+    
+
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Book name</th>
+        <th>Available</th>
+        <th>Loan to</th>
+      </tr>
+    </thead>
+    <tbody id="available-books-list"></tbody>
+  </table>
+
+
+
+
+
+
+
+
+
+
+
+  </div>
     </div>
     <div class="col-sm-2 sidenav">
       <div class="well">
@@ -65,4 +89,27 @@
 </footer>
 
 </body>
+
+<script src="./../JavaScript/PageSpecific/loanBook.js"></script>
+
+<script id="loan-book-template" type="text/x-handlebars-template">
+      <tr>
+        <td>{{BookName}}</td>
+        <td>{{Available}}</td>
+        <td>
+        
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select user
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+         <li><a href="#">user 1</a></li>
+         <li><a href="#">user 2</a></li>
+         <li><a href="#">user 3</a></li>
+         </ul>
+      </div>
+        
+        </td>
+      </tr>
+
+</script>
 </html>
