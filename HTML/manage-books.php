@@ -84,6 +84,8 @@
   <p>sgoulas technical assignment for Persado interview process</p>
 </footer>
 
+<script src="./../JavaScript/PageSpecific/manageBooks.js"></script>
+
 </body>
 
 <!-- handlebars books template -->
