@@ -77,7 +77,7 @@
 </div>
 
 <footer class="container-fluid text-center">
-  <p>Footer Text</p>
+  <p>sgoulas technical assignment for Persado interview process</p>
 </footer>
 
 </body>
