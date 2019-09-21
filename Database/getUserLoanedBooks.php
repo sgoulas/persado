@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     mysqli_query($con, "SET NAMES 'utf8'");
     mysqli_query($con, "SET CHARACTER SET 'utf8'");
     
-    $getuserLoanedBooksQuery = "SELECT Books.Name FROM Registry INNER JOIN BOOKS 
+    $getuserLoanedBooksQuery = "SELECT Books.Name, Registry.DateLoaned  FROM Registry INNER JOIN BOOKS 
     ON Registry.Book_ID = Books.Book_ID 
     WHERE U_ID='" . $userID . "' 
     AND DateReturned IS NULL";

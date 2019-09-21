@@ -52,8 +52,11 @@
   <div id="usersList" class="list-group">
   </div>
 </div><hr>
+
+  <div id="user-loaned-books-list">
       <h3>Εδώ εμφάνισε τη λίστα χρωστούμενων βιβλίων:</h3>
-      <p>Lorem ipsum...</p>
+    <a href="#" class="list-group-item"><span style="margin-left: 10px;">book name.. </span><span class="pull-right">date loaned</span></a>
+  </div>
     </div>
     <div class="col-sm-2 sidenav">
       <div class="well">
@@ -75,7 +78,7 @@
 <script src="./../JavaScript/PageSpecific/manageUsers.js"></script>
 
 
-
+<!-- handlebars user template -->
 <script id="entry-template" type="text/x-handlebars-template">
 <a href="#" class="list-group-item glyphicon glyphicon-user"
 data-id={{id}}
@@ -87,6 +90,14 @@ data-name={{firstName}}
 <span class ="glyphicon glyphicon-remove">
 </span>
 </span>
+</a>
+</script>
+
+<!-- handlebars loaned books by specific user template -->
+<script id="loaned-books-template" type="text/x-handlebars-template">
+<a href="#" class="list-group-item">
+<span style="margin-left: 10px;">{{bookName}}</span>
+<span class="pull-right">{{dateLoaned}}</span>
 </a>
 </script>
 
