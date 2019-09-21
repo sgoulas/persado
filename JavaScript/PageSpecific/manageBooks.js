@@ -77,7 +77,6 @@ $("document").ready(() => {
             alert("Can not delete book. Copies of it are still on loan.");
             return false;
         }
-        //TODO alert why it can not be deleted
 
         let bookName = $(this)
             .closest("tr")
@@ -89,5 +88,37 @@ $("document").ready(() => {
             .closest("tr")
             .attr("data-book-id");
         console.log(bookID);
+
+        let dataID = { ID: bookID };
+
+        let deleteBookPromise = new Promise((resolve, reject) => {
+            $.ajax({
+                url: "/persado/www/Database/deleteBook.php",
+                type: "POST",
+                data: JSON.stringify(dataID),
+                success: function(data) {
+                    console.log(data);
+                    resolve("success");
+                },
+                error: function(xhr, statusText, err) {
+                    console.log("error" + xhr.status);
+                    reject("error" + xhr.status);
+                }
+            });
+        });
+
+        deleteBookPromise
+            .then(() => {
+                alert("Book successfully deleted.");
+                $(this)
+                    .closest(".book")
+                    .remove();
+            })
+            .catch(reason => {
+                console.table(reason);
+                alert(
+                    "Something went wrong! Please contact your system administrator."
+                );
+            });
     });
 });
