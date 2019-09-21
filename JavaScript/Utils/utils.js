@@ -11,8 +11,3 @@ const objectifySerializedArray = dataArray => {
     }
     return json;
 };
-
-/** paize kai na min to xreiazomai, an kanw .html() to \u03c3\u03c0\u03b7\u03bb\u03b9\u03ac\u03c2 kapoy vgainei kanonika "σπηλιάς". Προσοχή στις συγκρίσεις. */
-const encode_utf8 = s => {
-    return unescape(encodeURIComponent(s));
-};
