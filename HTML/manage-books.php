@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="./../CSS/main.css" />
+   <link rel="stylesheet" href="./../CSS/manageBooks.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
@@ -43,11 +44,29 @@
       <p><a href="#">Link</a></p>
     </div>
     <div class="col-sm-8 text-left"> 
-      <h1>Welcome</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <hr>
-      <h3>Test</h3>
-      <p>Lorem ipsum...</p>
+      <h1>Books Directory</h1>
+  <div id="booksList" class="list-group">
+      <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Bookname</th>
+        <th class="ISBN">ISBN</th>
+        <th class="available-copies">Copies available</th>
+        <th class="purchased-copies">Copies purchased</th>
+        <th>Currently loaned to</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>moby dick</td>
+        <td class="ISBN">46845134384</td>
+        <td class="available-copies">5</td>
+        <td class="purchased-copies">10</td>
+        <td>sgoulas</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
     </div>
     <div class="col-sm-2 sidenav">
       <div class="well">
