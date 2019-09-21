@@ -4,11 +4,16 @@
 
 let booksSource;
 let booksTemplate;
+let bookSummaries = [];
 
 const populateBooksList = booksList => {
     let bookArray = [];
     for (let i = 0; i < booksList.length; i++) {
         let book = {};
+        let bookSummary = {
+            bookID: booksList[i].Book_ID,
+            summary: booksList[i].Summary
+        };
         book = {
             bookID: booksList[i].Book_ID,
             bookName: booksList[i].Name,
@@ -17,6 +22,8 @@ const populateBooksList = booksList => {
             available: booksList[i].Available,
             onLoan: booksList[i].Purchased - booksList[i].Available
         };
+
+        bookSummaries.push(bookSummary);
         bookArray.push(book);
     }
     //sort the list alphabetically by last name
@@ -26,6 +33,14 @@ const populateBooksList = booksList => {
     for (let i = 0; i < bookArray.length; i++) {
         let html = booksTemplate(bookArray[i]);
         $("#books-table-body").append(html);
+    }
+};
+
+const getBookSummary = bookID => {
+    for (let i = 0; i < bookSummaries.length; i++) {
+        if (bookSummaries[i].bookID == bookID) {
+            return bookSummaries[i].summary;
+        }
     }
 };
 
@@ -66,6 +81,13 @@ $("document").ready(() => {
             alert(reason);
         });
 
+    /*******************
+     * EVENT LISTENERS
+     *******************/
+
+    /**
+     * DELETE BOOK LISTENER
+     */
     $("body").on("click", ".glyphicon.glyphicon-remove", function() {
         let copiesOnLoan = parseInt(
             $(this)
@@ -87,7 +109,6 @@ $("document").ready(() => {
         let bookID = $(this)
             .closest("tr")
             .attr("data-book-id");
-        console.log(bookID);
 
         let dataID = { ID: bookID };
 
@@ -120,5 +141,23 @@ $("document").ready(() => {
                     "Something went wrong! Please contact your system administrator."
                 );
             });
+    });
+
+    /**
+     * DISPLAY BOOK SUMMARY LISTENER
+     */
+
+    $("body").on("click", ".glyphicon.glyphicon-text-size", function() {
+        let bookID = $(this)
+            .closest("tr")
+            .attr("data-book-id");
+
+        let bookSummary = getBookSummary(bookID);
+        let bookName = $(this)
+            .closest("tr")
+            .attr("data-book-name");
+        $("#bookSummary").html(bookSummary);
+        $("#book-summary-title").html("'" + bookName + "'");
+        $("#book-summary-info").show();
     });
 });

@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     mysqli_query($con, "SET NAMES 'utf8'");
     mysqli_query($con, "SET CHARACTER SET 'utf8'");
     
-    $getBooksQuery = "SELECT Book_ID, Name, ISBN, Purchased, Available from Books";
+    $getBooksQuery = "SELECT Book_ID, Summary, Name, ISBN, Purchased, Available from Books";
  
     $result = mysqli_query($con, $getBooksQuery);
     $rows = array();

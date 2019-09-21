@@ -40,9 +40,11 @@
 <div class="container-fluid text-center">    
   <div class="row content">
     <div class="col-sm-2 sidenav">
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
+<div>
+<p id="book-summary-info" style="display:none;"><strong><i><span id="book-summary-title"></span></i></strong></p>
+<div id="bookSummary">
+</div>
+</div>
     </div>
     <div class="col-sm-8 text-left"> 
       <h1>Books Directory</h1>
@@ -50,6 +52,7 @@
       <table class="table table-striped">
     <thead>
       <tr>
+        <th>Summary</th>
         <th>Book name</th>
         <th class="ISBN">ISBN</th>
         <th class="purchased-copies">Copies</th>
@@ -88,9 +91,10 @@
       data-book-id={{bookID}}
       data-book-name="{{bookName}}"
       data-purchased-copies={{purchased}}
-      data-available-copies={{available}}
+      data-available-copies={{available}}glyphicon
       data-onloan={{onLoan}}
       >
+        <td style="width: 5%;"><span class ="glyphicon glyphicon-text-size"></td>
         <td>{{bookName}}</td>
         <td class="ISBN">{{ISBN}}</td>
         <td class="purchased-copies">{{purchased}}</td>
