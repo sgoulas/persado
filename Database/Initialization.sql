@@ -7,7 +7,7 @@ CREATE TABLE Books
 (
 Book_ID int NOT NULL AUTO_INCREMENT,
 Name varchar(80) NOT NULL,
-Summary varchar(80) NOT NULL,
+Summary varchar(450) NOT NULL,
 ISBN varchar(17) NOT NULL,
 Purchased varchar(5),
 Available varchar(5),
