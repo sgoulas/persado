@@ -33,9 +33,6 @@
 		<li><a href="/persado/www/HTML/manage-books.php">Manage books</a></li>
 		<li class="active"><a href="/persado/www/HTML/manage-users.php">Manage users</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
     </div>
   </div>
 </nav>
