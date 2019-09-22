@@ -95,7 +95,7 @@
 
 <!-- HANDLEBAR TEMPLATES-->
 <script id="loan-book-template" type="text/x-handlebars-template">
-      <tr class="user-row" data-book-id={{BookID}}>
+      <tr class="book-row" data-book-id={{BookID}}>
         <td>{{BookName}}</td>
         <td>{{Available}}</td>
 

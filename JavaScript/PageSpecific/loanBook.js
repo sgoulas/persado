@@ -119,8 +119,60 @@ $("document").ready(function() {
             }
         }
         $(this)
-            .closest(".user-row")
+            .closest(".book-row")
             .find(".loan-button")
             .attr("data-loan-to-id", selecteUserID);
+    });
+
+    $("body").on("click", ".loan-button", function() {
+        let userID = $(this).attr("data-loan-to-id");
+        if (userID === "-1") {
+            alert("Please select a user");
+            return false;
+        }
+
+        let bookID = $(this)
+            .closest(".book-row")
+            .attr("data-book-id");
+        console.log(
+            "loan book with id: " + bookID + " to user with id: " + userID
+        );
+
+        let loanObject = {
+            userID: userID,
+            bookID: bookID
+        };
+
+        let loanBookPromise = new Promise((resolve, reject) => {
+            $.ajax({
+                type: "POST",
+                url: "/persado/www/Database/loanBook.php",
+                data: JSON.stringify(loanObject),
+                success: function(data) {
+                    //this refers to the success of the AJAX call, not the db operation
+
+                    if (data.includes("error")) {
+                        reject(data);
+                    }
+                    resolve("success: " + data);
+                },
+                error: function(jqXHR, exception) {
+                    reject(jqXHR.status + " --- " + exception);
+                },
+                contentType: "application/json;"
+            });
+        });
+
+        loanBookPromise
+            .then(() => {
+                alert("Book successfully loaned to user!");
+                location.reload();
+            })
+            .catch(reason => {
+                console.log(reason);
+                alert(
+                    "Something went wrong! Please contact your system administrator."
+                );
+            });
     });
 });
