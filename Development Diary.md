@@ -1,12 +1,5 @@
 18/9
 
-tools instalation & set up (wampserver)
-git initialization
-initial project structure: dummy pages, javascript classes, library inclusions, database set up, add user functionality with dummy data
-antikatastasi dummy data me pragmatika dedomena poy pianontai apo form listener
-skeftika to trade off anamesa ston diamoirasmo kai organwsi twn arxeiwn(pes to kalitera) kai sto pws den einai emfanes apo poy erxetai ka8e sinartisi
-skeftika na valw webpack gia na ftianw mikra bundles gia tin ka8e omada apo scripts alla se auti ti fasi 8elw na elegsw ton kwdika opote isws ginei meta
-
 Δημιούργησα την δομή του project και τους φακέλους που θα χρησιμοποιήσω. Έστησα το πρώτο σχέδιο για τη βάση και εισήγαγα κατευθείαν κάποια mock up
 δεδομένα από το MySQLi για να πειραματιστώ με τη δομή της βάσης.
 
