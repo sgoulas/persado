@@ -1,3 +1,4 @@
+let test;
 $("document").ready(function() {
     /**
      * Handlebars templates compilations
@@ -49,9 +50,24 @@ $("document").ready(function() {
 
         //sort the list by book name
         booksArray.sort((a, b) => (a.BookName > b.BookName ? 1 : -1));
+        test = booksArray;
+        console.log(test);
+
         for (let i = 0; i < booksArray.length; i++) {
-            let html = booksTemplate(booksArray[i]);
-            $("#loaned-books-list").append(html);
+            let renderedSofar = $(".book-row");
+            let shouldRender = true;
+            for (let j = 0; j < renderedSofar.length; j++) {
+                if (
+                    renderedSofar.eq(j).attr("data-book-id") ===
+                    booksArray[i].BookID
+                ) {
+                    shouldRender = false;
+                }
+            }
+            if (shouldRender) {
+                let html = booksTemplate(booksArray[i]);
+                $("#loaned-books-list").append(html);
+            }
         }
     };
 
@@ -95,5 +111,18 @@ $("document").ready(function() {
             .attr("data-return-from-id", selecteUserID);
     });
 
-    $("body").on("click", ".return-button", function() {});
+    $("body").on("click", ".return-button", function() {
+        let userID = $(this).attr("data-return-from-id");
+        if (userID === "-1") {
+            alert("Please select a user");
+            return false;
+        }
+
+        let bookID = $(this)
+            .closest(".book-row")
+            .attr("data-book-id");
+        console.log(
+            "return book with id: " + bookID + " from user with id: " + userID
+        );
+    });
 });
