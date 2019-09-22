@@ -26,6 +26,25 @@ getRegistryPromise
         );
     });
 
+/**
+ *
+ * @param {String} userID
+ * @param {String} bookID
+ *
+ * checks if user can loan book
+ * @returns false if they have already loaned it (registry contains record of their id with book's id)
+ * @returns true otherwise
+ */
+const checkRegistry = (userID, bookID) => {
+    for (let i = 0; i < registry.length; i++) {
+        if (registry[i].Book_ID === bookID && registry[i].U_ID === userID) {
+            return false;
+        }
+    }
+
+    return true;
+};
+
 /*****************
  * DOCUMENT READY
  *****************/
@@ -187,6 +206,13 @@ $("document").ready(function() {
         console.log(
             "loan book with id: " + bookID + " to user with id: " + userID
         );
+
+        //TODO check if user already has that book loaned
+        let canUserLoanBook = checkRegistry(userID, bookID);
+        if (!canUserLoanBook) {
+            alert("Can not loan book\nThis user has already loaned it.");
+            return false;
+        }
 
         let loanObject = {
             userID: userID,
