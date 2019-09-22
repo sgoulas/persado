@@ -1,3 +1,31 @@
+let getRegistryPromise = new Promise((resolve, reject) => {
+    $.ajax({
+        url: "/persado/www/Database/getCurrentRegistry.php",
+        type: "GET",
+        success: function(data) {
+            resolve(JSON.parse(data));
+        },
+        error: function(xhr, statusText, err) {
+            console.log("error" + err + xhr.status);
+            reject("error" + err + xhr.status);
+        }
+    });
+});
+
+let registry;
+
+getRegistryPromise
+    .then(data => {
+        registry = data;
+        Object.freeze(registry); //freeze array to prevent malicious modifications
+    })
+    .catch(reason => {
+        console.table(reason);
+        alert(
+            "Something went wrong! Please contact your system administrator."
+        );
+    });
+
 /*****************
  * DOCUMENT READY
  *****************/
@@ -38,6 +66,28 @@ $("document").ready(function() {
             }
         });
     });
+
+    let getCurrentRegistryPromise = new Promise((resolve, reject) => {
+        $.ajax({
+            url: "/persado/www/Database/getCurrentRegistry.php",
+            type: "GET",
+            success: function(data) {
+                resolve(JSON.parse(data));
+            },
+            error: function(xhr, statusText, err) {
+                reject("error" + xhr.status);
+            }
+        });
+    });
+
+    getCurrentRegistryPromise
+        .then(data => {})
+        .catch(reason => {
+            console.table(reason);
+            alert(
+                "Something went wrong! Please contact your system administrator."
+            );
+        });
 
     /**
      * promise chain
