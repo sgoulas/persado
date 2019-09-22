@@ -124,5 +124,42 @@ $("document").ready(function() {
         console.log(
             "return book with id: " + bookID + " from user with id: " + userID
         );
+
+        let loanObject = {
+            userID: userID,
+            bookID: bookID
+        };
+
+        let returnBookPromise = new Promise((resolve, reject) => {
+            $.ajax({
+                type: "POST",
+                url: "/persado/www/Database/returnBook.php",
+                data: JSON.stringify(loanObject),
+                success: function(data) {
+                    //this refers to the success of the AJAX call, not the db operation
+
+                    if (data.includes("error")) {
+                        reject(data);
+                    }
+                    resolve("success: " + data);
+                },
+                error: function(jqXHR, exception) {
+                    reject(jqXHR.status + " --- " + exception);
+                },
+                contentType: "application/json;"
+            });
+        });
+
+        returnBookPromise
+            .then(() => {
+                alert("Book successfully returned from user!");
+                location.reload();
+            })
+            .catch(reason => {
+                console.log(reason);
+                alert(
+                    "Something went wrong! Please contact your system administrator."
+                );
+            });
     });
 });
