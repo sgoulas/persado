@@ -95,7 +95,7 @@
 
 <!-- HANDLEBAR TEMPLATES-->
 <script id="loan-book-template" type="text/x-handlebars-template">
-      <tr data-book-id={{BookID}}>
+      <tr class="user-row" data-book-id={{BookID}}>
         <td>{{BookName}}</td>
         <td>{{Available}}</td>
 
@@ -106,13 +106,13 @@
       </select>
         </td>
 
-        <td><button type="button" class="btn btn-primary">loan</button></td>
+        <td><button type="button" class="btn btn-primary loan-button" data-loan-to-id="-1">loan</button></td>
       </tr>
 
 </script>
 
 <script id="user-options" type="text/x-handlebars-template">
-<option data-user-id={{UserID}}>{{FirstName}} {{LastName}}</option>
+<option class="user-option" data-user-id={{UserID}}>{{FirstName}} {{LastName}}</option>
 </script>
 
 

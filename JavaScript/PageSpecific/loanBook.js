@@ -104,4 +104,23 @@ $("document").ready(function() {
             dropdownMenus.eq(i).append(html);
         }
     };
+
+    /******************
+     * EVENT LISTENERS
+     ******************/
+
+    $("body").on("change", ".users-select-menu", function() {
+        var selectedOption = this.value;
+        let allOptions = $(this).find(".user-option");
+        let selecteUserID;
+        for (let i = 0; i < allOptions.length; i++) {
+            if (allOptions.eq(i).html() === selectedOption) {
+                selecteUserID = allOptions.eq(i).attr("data-user-id");
+            }
+        }
+        $(this)
+            .closest(".user-row")
+            .find(".loan-button")
+            .attr("data-loan-to-id", selecteUserID);
+    });
 });
