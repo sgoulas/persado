@@ -36,6 +36,10 @@ getRegistryPromise
  * @returns true otherwise
  */
 const checkRegistry = (userID, bookID) => {
+    if (registry === undefined) {
+        //registry is actually empty
+        return true;
+    }
     for (let i = 0; i < registry.length; i++) {
         if (registry[i].Book_ID === bookID && registry[i].U_ID === userID) {
             return false;
@@ -207,7 +211,6 @@ $("document").ready(function() {
             "loan book with id: " + bookID + " to user with id: " + userID
         );
 
-        //TODO check if user already has that book loaned
         let canUserLoanBook = checkRegistry(userID, bookID);
         if (!canUserLoanBook) {
             alert("Can not loan book\nThis user has already loaned it.");

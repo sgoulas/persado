@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="./../CSS/main.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="./../JavaScript/Utils/handlebars-v4.2.0.js"></script>
 </head>
 <body>
 
@@ -43,11 +44,7 @@
       <p><a href="#">Link</a></p>
     </div>
     <div class="col-sm-8 text-left"> 
-      <h1>Welcome</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <hr>
-      <h3>Test</h3>
-      <p>Lorem ipsum...</p>
+    <div id="loaned-books"></div>
     </div>
     <div class="col-sm-2 sidenav">
       <div class="well">
@@ -65,4 +62,27 @@
 </footer>
 
 </body>
+
+
+<!-- handlebars user template -->
+<script id="loaned-books-template" type="text/x-handlebars-template">
+      <tr class="book-row" data-book-id={{BookID}}>
+        <td>{{BookName}}</td>
+
+        <td>
+      <select class="form-control users-select-menu" style="width: 60%">
+        <option value="" selected disabled>Select user</option>
+
+      </select>
+        </td>
+
+        <td><button type="button" class="btn btn-primary loan-button" data-loan-to-id="-1">return</button></td>
+      </tr>
+</script>
+
+<!-- handlebars loaned books by specific user template -->
+<script id="user-options" type="text/x-handlebars-template">
+<option class="user-option" data-user-id={{UserID}}>{{FirstName}} {{LastName}}</option>
+</script>
+
 </html>
