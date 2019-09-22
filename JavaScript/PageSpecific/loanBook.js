@@ -18,13 +18,33 @@ $("document").ready(function() {
             },
             error: function(xhr, statusText, err) {
                 console.log("error" + xhr.status);
+                reject("error" + xhr.status);
             }
         });
     });
 
+    let getEligibleUsersPromise = new Promise((resolve, reject) => {
+        //TODO AJAX call
+    });
+
+    /**
+     * promise chain
+     * get available books
+     * then populate the list
+     * then get eligible users
+     * then populate the user dropdown menus
+     */
     getAvailableBooksPromise
         .then(data => {
             populateBooksList(JSON.parse(data));
+        })
+        .then(() => {
+            return getEligibleUsersPromise;
+        })
+        .then(data => {
+            console.log(data);
+
+            populateUserDropdowns(JSON.parse(data));
         })
         .catch(reason => {
             console.table(reason);
@@ -50,4 +70,6 @@ $("document").ready(function() {
             $("#available-books-list").append(html);
         }
     };
+
+    const populateUserDropdowns = users => {};
 });
