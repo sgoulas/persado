@@ -6,7 +6,7 @@ This projects implements the use of the following:
 
 Front End:
 
-HTML5, BOOTSTRAP, CCS3, ES6, AJAX (implemented with ES6 promises)
+HTML5, BOOTSTRAP, CCS3, ES6, AJAX (implemented with ES6 promises), Jquery, Handlebars.
 
 Back End:
 
