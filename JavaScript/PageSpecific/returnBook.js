@@ -75,4 +75,25 @@ $("document").ready(function() {
             }
         }
     };
+
+    /******************
+     * EVENT LISTENERS
+     ******************/
+
+    $("body").on("change", ".users-select-menu", function() {
+        var selectedOption = this.value;
+        let allOptions = $(this).find(".user-option");
+        let selecteUserID;
+        for (let i = 0; i < allOptions.length; i++) {
+            if (allOptions.eq(i).html() === selectedOption) {
+                selecteUserID = allOptions.eq(i).attr("data-user-id");
+            }
+        }
+        $(this)
+            .closest(".book-row")
+            .find(".return-button")
+            .attr("data-return-from-id", selecteUserID);
+    });
+
+    $("body").on("click", ".return-button", function() {});
 });

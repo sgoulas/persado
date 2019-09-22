@@ -88,8 +88,7 @@
 
       </select>
         </td>
-
-        <td><button type="button" class="btn btn-primary loan-button" data-loan-to-id="-1">return</button></td>
+        <td><button type="button" class="btn btn-primary return-button" data-return-from-id="-1">return</button></td>
       </tr>
 </script>
 
