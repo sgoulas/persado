@@ -33,3 +33,13 @@ footer {
         height: auto;
     }
 }
+
+@media screen and (min-width: 1200px) {
+    input[type="text"] {
+        width: 50%;
+    }
+
+    textarea#summary {
+        width: 50%;
+    }
+}

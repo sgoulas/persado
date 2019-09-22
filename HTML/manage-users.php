@@ -39,9 +39,7 @@
 <div class="container-fluid text-center">    
   <div class="row content">
     <div class="col-sm-2 sidenav">
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
+
     </div>
     <div class="col-sm-8 text-left"> 
 <div class="container">
@@ -57,10 +55,13 @@
     </div>
     <div class="col-sm-2 sidenav">
       <div class="well">
-        <p>ADS</p>
+        <a href="https://github.com/sgoulas"><p>my git hub profile</p></a>
       </div>
       <div class="well">
-        <p>ADS</p>
+        <a href="https://www.linkedin.com/in/spyros-goulas/"><p>my linkedIn profile</p></a>
+      </div>
+       <div class="well">
+        <a href="https://webmasters.stackexchange.com/users/89138/%ce%a3%cf%80%cf%8d%cf%81%ce%bf%cf%82-%ce%93%ce%bf%cf%8d%ce%bb%ce%b1%cf%82"><p>my SO webmasters profile</p></a>
       </div>
     </div>
   </div>
