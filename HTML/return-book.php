@@ -9,6 +9,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <script src="./../JavaScript/Utils/handlebars-v4.2.0.js"></script>
+  <script src="./../JavaScript/PageSpecific/returnBook.js"></script>
 </head>
 <body>
 
@@ -44,7 +45,19 @@
       <p><a href="#">Link</a></p>
     </div>
     <div class="col-sm-8 text-left"> 
-    <div id="loaned-books"></div>
+<h2>Select book to return:</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Book name</th>
+        <th>Select user</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="loaned-books-list"></tbody>
+  </table>
+
     </div>
     <div class="col-sm-2 sidenav">
       <div class="well">
