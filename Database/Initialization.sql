@@ -36,3 +36,14 @@ ON DELETE CASCADE ON UPDATE CASCADE,
 FOREIGN KEY (U_ID) REFERENCES Users (U_ID)
 ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE=INNODB;
+
+INSERT INTO Users (FirstName, LastName, Address, BooksLoaned) VALUES ("Spyros", "Goulas","Chatzi 13 Anw Patisia","1");
+INSERT INTO Users (FirstName, LastName, Address, BooksLoaned) VALUES ("Andrew", "Papadopoylos","Athinaidwn 47 Kipseli","1");
+INSERT INTO Users (FirstName, LastName, Address, BooksLoaned) VALUES ("Panos", "Argyropoylos","Epameinonda 4 Kifisia","0");
+
+INSERT INTO Books(Name, Summary, ISBN, Purchased, Available) VALUES("The old man and the sea","An epic tale of man vs nature vs man.","846135438.","5","4");
+INSERT INTO Books(Name, Summary, ISBN, Purchased, Available) VALUES("Moby Dick","A story of revenge, as a captain seeks to kill a whale that cost him his leg.","216543216546","3","2");
+INSERT INTO Books(Name, Summary, ISBN, Purchased, Available) VALUES("Secret Story","Ben makes new friends, but his new friends have a dark secret.","81246846","2","2");
+
+INSERT INTO Registry(Book_ID, U_ID, DateLoaned) VALUES ("1","1",NOW());
+INSERT INTO Registry(Book_ID, U_ID, DateLoaned) VALUES ("2","2",NOW());

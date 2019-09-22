@@ -53,7 +53,7 @@
 
   <div id="user-loaned-books-list" style="display:none;">
       <h3>Books loaned to this user:</h3>
-    <a href="#" class="list-group-item"><span style="margin-left: 10px;"><strong>Book name </strong></span><span class="pull-right"><strong>Date loaned</strong></span></a>
+    <a href="#" class="list-group-item loaned-books"><span style="margin-left: 10px;"><strong>Book name </strong></span><span class="pull-right"><strong>Date loaned</strong></span></a>
   </div>
     </div>
     <div class="col-sm-2 sidenav">
@@ -94,7 +94,7 @@ data-name={{firstName}}
 
 <!-- handlebars loaned books by specific user template -->
 <script id="loaned-books-template" type="text/x-handlebars-template">
-<a href="#" class="list-group-item">
+<a href="#" class="list-group-item loaned-books">
 <span style="margin-left: 10px;">{{bookName}}</span>
 <span class="pull-right">{{dateLoaned}}</span>
 </a>

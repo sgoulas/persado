@@ -109,6 +109,10 @@ const populateUserLoanedBooksList = booksList => {
     bookArray.sort((a, b) => (a.dateLoaned > b.dateLoaned ? 1 : -1));
 
     //create the html elements and render them
+    let previousRenderedLoanedBooks = $(".list-group-item.loaned-books");
+    for (let i = 0; i < previousRenderedLoanedBooks.length; i++) {
+        previousRenderedLoanedBooks.eq(i).remove();
+    }
     for (let i = 0; i < bookArray.length; i++) {
         let html = booksTemplate(bookArray[i]);
         $("#user-loaned-books-list").append(html);
