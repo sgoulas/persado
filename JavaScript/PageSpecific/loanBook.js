@@ -8,6 +8,8 @@ $("document").ready(function() {
 
     let booksSource = document.getElementById("loan-book-template").innerHTML;
     let booksTemplate = Handlebars.compile(booksSource);
+    let userSource = document.getElementById("user-options").innerHTML;
+    let userTemplate = Handlebars.compile(userSource);
 
     let getAvailableBooksPromise = new Promise((resolve, reject) => {
         $.ajax({
@@ -24,7 +26,17 @@ $("document").ready(function() {
     });
 
     let getEligibleUsersPromise = new Promise((resolve, reject) => {
-        //TODO AJAX call
+        $.ajax({
+            url: "/persado/www/Database/getEligibleUsers.php",
+            type: "GET",
+            success: function(data) {
+                resolve(data);
+            },
+            error: function(xhr, statusText, err) {
+                console.log("error" + xhr.status);
+                reject("error" + xhr.status);
+            }
+        });
     });
 
     /**
@@ -57,6 +69,7 @@ $("document").ready(function() {
         let listEntries = [];
         for (let i = 0; i < books.length; i++) {
             let entry = {
+                BookID: books[i].Book_ID,
                 BookName: books[i].Name,
                 Available: books[i].Available
             };
@@ -71,5 +84,24 @@ $("document").ready(function() {
         }
     };
 
-    const populateUserDropdowns = users => {};
+    const populateUserDropdowns = users => {
+        let userArray = [];
+        for (let i = 0; i < users.length; i++) {
+            let user = {
+                UserID: users[i].U_ID,
+                FirstName: users[i].FirstName,
+                LastName: users[i].LastName
+            };
+            userArray.push(user);
+        }
+
+        let html = userTemplate(userArray[0]);
+        for (let i = 1; i < userArray.length; i++) {
+            html += userTemplate(userArray[i]);
+        }
+        let dropdownMenus = $(".users-select-menu");
+        for (let i = 0; i < dropdownMenus.length; i++) {
+            dropdownMenus.eq(i).append(html);
+        }
+    };
 });

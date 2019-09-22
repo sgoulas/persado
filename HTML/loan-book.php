@@ -93,25 +93,27 @@
 
 <script src="./../JavaScript/PageSpecific/loanBook.js"></script>
 
+<!-- HANDLEBAR TEMPLATES-->
 <script id="loan-book-template" type="text/x-handlebars-template">
-      <tr>
+      <tr data-book-id={{BookID}}>
         <td>{{BookName}}</td>
         <td>{{Available}}</td>
 
         <td>
-      <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select user
-        <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-         <li><a href="#">user 1</a></li>
-         <li><a href="#">user 2</a></li>
-         <li><a href="#">user 3</a></li>
-         </ul>
-      </div>
+      <select class="form-control users-select-menu" style="width: 60%">
+        <option value="" selected disabled>Select user</option>
+
+      </select>
         </td>
 
         <td><button type="button" class="btn btn-primary">loan</button></td>
       </tr>
 
 </script>
+
+<script id="user-options" type="text/x-handlebars-template">
+<option data-user-id={{UserID}}>{{FirstName}} {{LastName}}</option>
+</script>
+
+
 </html>
