@@ -2,16 +2,30 @@ This is my technical assigment as part of my interview process for the position 
 
 As instructured, I switched the mentioned technologies with my choice of stack.
 
-This projects implements the use of the following:
+## Time limit
 
-Front End:
+This assignment was completed in 6 days, working 4-5 hours per day. 
 
-HTML5, BOOTSTRAP, CCS3, ES6, AJAX (implemented with ES6 promises), Jquery, Handlebars.
+## Technologies used
 
-Back End:
+### Front End
 
-Mysqli, PHP
+* HTML5
+* BOOTSTRAP
+* CCS3
+* ES6
+* AJAX (implemented with ES6 promises)
+* Jquery
+* Handlebars.
 
-Tools Used:
+### Back End:
 
-Wampserver, phpMyAdmin, VS Code, GIT.
+* Mysqli
+* PHP
+
+### Tools Used:
+
+* Wampserver
+* phpMyAdmin
+* VS Code
+* GIT
