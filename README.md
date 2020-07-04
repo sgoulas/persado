@@ -12,22 +12,22 @@ This assignment was completed in 6 days, working 4-5 hours per day.
 
 ### Front End
 
-* HTML5
-* BOOTSTRAP
-* CCS3
-* ES6
-* AJAX (implemented with ES6 promises)
-* Jquery
-* Handlebars.
+* `HTML5`
+* `BOOTSTRAP`
+* `CCS3`
+* `ES6`
+* `AJAX` (implemented with ES6 promises)
+* `Jquery`
+* `Handlebars`
 
 ### Back End:
 
-* Mysqli
-* PHP
+* `Mysqli`
+* `PHP`
 
 ### Tools Used:
 
-* Wampserver
-* phpMyAdmin
-* VS Code
-* GIT
+* `Wampserver`
+* `phpMyAdmin`
+* `VS Code`
+* `GIT`
